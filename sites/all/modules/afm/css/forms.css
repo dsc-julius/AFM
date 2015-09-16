@@ -1,0 +1,12 @@
+.form-type-media{
+  margin: 10px 0;
+}
+.form-type-media a.browse, .form-type-media label{
+  margin: 10px 0 !important
+}
+.media-browser-launch-processed{
+  margin: 15px 0;
+}
+.conditions-associated-in-therapy-area{
+  display: none;
+}

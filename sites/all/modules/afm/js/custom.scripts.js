@@ -4,6 +4,6 @@ jQuery(document).ready(function($) {
 		$(this).closest('li').remove();
 	});
 
-	$('ul#toolbar-menu').append('<li class=""><a href="/afm/node/21/edit" id="" title="Homepage Settings"><span class="icon"></span>Homepage Settings <span class="element-invisible">(Homepage Settings)</span></a></li>');
-	$('ul#toolbar-menu').append('<li class=""><a href="/afm/node/13/edit" id="" title="Auctions"><span class="icon"></span>Auctions <span class="element-invisible">(Auctions)</span></a></li>');
+	$('ul#toolbar-menu').append('<li class=""><a href="/afm/dev/node/21/edit" id="" title="Homepage Settings"><span class="icon"></span>Homepage Settings <span class="element-invisible">(Homepage Settings)</span></a></li>');
+	$('ul#toolbar-menu').append('<li class=""><a href="/afm/dev/node/13/edit" id="" title="Auctions"><span class="icon"></span>Auctions <span class="element-invisible">(Auctions)</span></a></li>');
 });

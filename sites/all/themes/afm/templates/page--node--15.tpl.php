@@ -31,12 +31,12 @@
                         <div class="social-media animated hiding" data-animation="fadeIn" data-delay="300">
                             <h2>Share The Intel</h2>
                             <ul class="social-links clearfix">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a><span class='st_facebook_large' displayText='Facebook'></span></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a><span class='st_twitter_large' displayText='Tweet'></span></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a><span class='st_linkedin_large' displayText='LinkedIn'></span></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a><span class='st_googleplus_large' displayText='Google +'></span></li>
+                                <li><a href="#"><i class="fa fa-pinterest-p"></i></a><span class='st_pinterest_large' displayText='Pinterest'></span></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i></a><span class='st_email_large' displayText='Email'></span></li>
                             </ul>
                         </div>
                     </div>
@@ -44,3 +44,6 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({publisher: "1b7dd0ba-60c0-48ca-a506-b9d59c1fa42f", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>

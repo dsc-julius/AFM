@@ -36,9 +36,6 @@ if(!empty($node->field_hero_image['und']['0']['uri'])) {
     echo '</style>';
 }
 ?>
-    <script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "1b7dd0ba-60c0-48ca-a506-b9d59c1fa42f", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
     <div class="wrap">
         <div class="hero-image">
             <div class="hero-overlay">
@@ -67,12 +64,22 @@ if(!empty($node->field_hero_image['und']['0']['uri'])) {
                             <?php if(!empty($node->field_showroom_link['und']['0']['value'])) { ?><li><a href="<?php echo $node->field_showroom_link['und']['0']['value']; ?>"><i class="icon icon-22 icon-view"></i><span>VIEW SHOWROOM</span></a></li><?php } ?>
                             <?php if(!empty($node->field_safety_and_specs)) { ?><li><a href="<?php echo $node->field_safety_and_specs['und']['0']['value']; ?>" target="_blank"><i class="icon icon-22 icon-safety"></i><span>SAFETY & SPECS</span></a></li><?php } ?>
                             <li><a href="javascript: window.print();"><i class="icon icon-22 icon-print"></i><span>PRINT PAGE</span></a></li>
-                            <li class="sharing-wrapper"><a href="#"><i class="icon icon-22 icon-share"></i><span>SHARE</span></a><div class="sharing"><span class='st_sharethis_large' displayText='ShareThis'></span>
-<span class='st_facebook_large' displayText='Facebook'></span>
-<span class='st_twitter_large' displayText='Tweet'></span>
-<span class='st_linkedin_large' displayText='LinkedIn'></span>
-<span class='st_pinterest_large' displayText='Pinterest'></span>
-<span class='st_email_large' displayText='Email'></span></div></li>
+                            <li class="sharing-wrapper">
+                                <a href="#">
+                                    <i class="icon icon-22 icon-share"></i>
+                                    <span>SHARE</span>
+                                </a>
+                                <div class="sharing">
+                                    <ul class="social-links clearfix">
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a><span class='st_facebook_large' displayText='Facebook'></span></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a><span class='st_twitter_large' displayText='Tweet'></span></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a><span class='st_linkedin_large' displayText='LinkedIn'></span></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a><span class='st_googleplus_large' displayText='Google +'></span></li>
+                                        <li><a href="#"><i class="fa fa-pinterest-p"></i></a><span class='st_pinterest_large' displayText='Pinterest'></span></li>
+                                        <li><a href="#"><i class="fa fa-envelope"></i></a><span class='st_email_large' displayText='Email'></span></li>
+                                    </ul>
+                                </div>
+                            </li>
                         </ul>
                     </div>
 
@@ -120,7 +127,7 @@ if(!empty($node->field_hero_image['und']['0']['uri'])) {
                         <div class="model-image">  
                             <div class="notice-soon">
                                 <h1>Available <br>Soon</h1>
-                                <a href="#" class="subscribe-btn">
+                                <a href="#" class="subscribe-btn" data-toggle="modal" data-target="#newsletter-sign-up">
                                     <span class="fa fa-angle-left angle-3"></span>
                                     <span class="fa fa-angle-left angle-2"></span>
                                     <span class="fa fa-angle-left angle-1"></span>
@@ -225,3 +232,6 @@ if(!empty($node->field_hero_image['und']['0']['uri'])) {
         </div> 
         <?php } ?> 
     </div>
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({publisher: "1b7dd0ba-60c0-48ca-a506-b9d59c1fa42f", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>

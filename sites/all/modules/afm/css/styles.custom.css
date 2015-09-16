@@ -1,0 +1,7 @@
+.page-node-871 .form-item-title, .page-node-871 .vertical-tabs, .page-node-871 .breadcrumb {
+	display: none;
+}
+.page-node-871 select.form-select {
+	width: 100%;
+	min-height: 100px;
+}

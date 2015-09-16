@@ -1,0 +1,28 @@
+.az-main-menu{
+  
+}
+
+.az-main-menu ul.main-list{
+  list-style-type: none; 
+}
+
+.az-main-menu ul.main-list li{
+  padding: 30px;
+  float: left;
+  text-align: center;
+}
+.az-main-menu .label{
+  font-size: 14px;
+  padding: 10px 0 0 0;
+}
+.az-icons{
+  font-size: 90px !important;
+}
+
+body #branding {
+	background-color: #830051;
+}
+
+body #branding h1.page-title, body #branding h2.element-invisible,  body #branding div.breadcrumb a {
+	color: #fff;
+}

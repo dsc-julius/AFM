@@ -87,11 +87,14 @@ function afm_page_alter(&$page){
   elseif(is_object($node) && $node->type == 'videos'){
     drupal_goto('node/11');
   }
-  elseif(is_object($node) && $node->type == 'vehicle'){
-    if(!empty($node) && !empty($node->field_vehicle_type['und']['0']['target_id'])) {
-      drupal_goto('node/'.$node->field_vehicle_type['und']['0']['target_id']);
-    }
+  elseif(is_object($node) && $node->type == 'vehicle_parts'){
+    drupal_goto('node/26');
   }
+  // elseif(is_object($node) && $node->type == 'vehicle'){
+  //   if(!empty($node) && !empty($node->field_vehicle_type['und']['0']['target_id'])) {
+  //     drupal_goto('node/'.$node->field_vehicle_type['und']['0']['target_id']);
+  //   }
+  // }
 }
 
 

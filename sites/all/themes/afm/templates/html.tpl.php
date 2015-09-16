@@ -20,8 +20,8 @@
     $alias = (drupal_get_path_alias()) ? drupal_get_path_alias() : ''; 
     $alias = (drupal_is_front_page()) ? 'home' : $alias;
     $alias = (is_object($node) && $node->nid == '15') ? 'contact-us' : $alias;
-    $alias = (is_object($node) && $node->nid == '30') ? 'contact-us' : $alias;
-    $alias = (is_object($node) && $node->nid == '26') ? 'vehicle-overview' : $alias;
+    $alias = (is_object($node) && $node->nid == '31') ? 'contact-us' : $alias;
+    $alias = (is_object($node) && ($node->nid == '26' || $node->nid == '33')) ? 'vehicle-overview' : $alias;
 
     if(is_object($node) && $node->nid == 12) {
       $auctions = node_load(13);
@@ -38,7 +38,7 @@
     $alias = ($alias == 'user/login') ? 'contact-us' : $alias;
 
     $nid = (is_object($node)) ? $node->nid : NULL; 
-    $class = ($nid && $node->type == 'page' || $alias == 'user/login' || $node->nid == '30') ? 'wrapper-2' : '';
+    $class = ($nid && $node->type == 'page' || $alias == 'user/login' || $node->nid == '31' || $node->nid == '33') ? 'wrapper-2' : '';
   ?>
   <div id="<?php echo $alias; ?>" class="wrapper <?php echo $class; ?>">
     <?php include('includes/header-newsletter-sign-up.tpl.php'); ?>

@@ -47,7 +47,11 @@
 
                   $odd = count($nodes) % 2;
                   $count = count($nodes);
+                  $index = 0;
                   foreach ($nodes as $key => $data) {
+                    if($index == 5) continue;
+                    else $index += 1;
+                    
                     $image = ($data->field_homepage_panel_image) ? file_create_url($data->field_homepage_panel_image['und']['0']['uri']) : drupal_get_path('theme','afm') . '/images/vehicle-img-c1.jpg';
                     $filename_d = ($data->field_homepage_panel_image) ? $data->field_homepage_panel_image['und']['0']['filename'] : 'vehicle-img-c1.jpg';
                     $filename_m = ($data->field_homepage_panel_image_m) ? $data->field_homepage_panel_image_m['und']['0']['filename'] : 'm-vehicle-img-c1.jpg';
