@@ -1,0 +1,143 @@
+
+
+/* ==========================================================================
+   FONTS
+   ========================================================================== */
+
+
+@font-face {
+    font-family: 'Squares';
+    src: url('../fonts/squares_bold_free-webfont.eot');
+    src: url('../fonts/squares_bold_free-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/squares_bold_free-webfont.woff2') format('woff2'),
+         url('../fonts/squares_bold_free-webfont.woff') format('woff'),
+         url('../fonts/squares_bold_free-webfont.ttf') format('truetype'),
+         url('../fonts/squares_bold_free-webfont.svg#squares_boldregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham-Ultra';
+    src: url('../fonts/gotham-ultra-webfont.eot');
+    src: url('../fonts/gotham-ultra-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/gotham-ultra-webfont.woff') format('woff'),
+         url('../fonts/gotham-ultra-webfont.ttf') format('truetype'),
+         url('../fonts/gotham-ultra-webfont.svg#gotham-ultra-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham-Bold';
+    src: url('../fonts/gotham-bold-webfont.eot');
+    src: url('../fonts/gotham-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/gotham-bold-webfont.woff') format('woff'),
+         url('../fonts/gotham-bold-webfont.ttf') format('truetype'),
+         url('../fonts/gotham-bold-webfont.svg#GothamBoldRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham-Medium';
+    src: url('../fonts/gotham-medium-webfont.eot');
+    src: url('../fonts/gotham-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/gotham-medium-webfont.woff') format('woff'),
+         url('../fonts/gotham-medium-webfont.ttf') format('truetype'),
+         url('../fonts/gotham-medium-webfont.svg#GothamMediumRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham-Light';
+    src: url('../fonts/gotham-light-webfont.eot');
+    src: url('../fonts/gotham-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/gotham-light-webfont.woff') format('woff'),
+         url('../fonts/gotham-light-webfont.ttf') format('truetype'),
+         url('../fonts/gotham-light-webfont.svg#GothamLightRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+.icon {
+    display:inline-block;
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+    -webkit-background-size:100% auto !important;
+    -moz-background-size:100% auto !important;
+    background-size:100% auto !important;
+}
+
+.icon-22 {
+    width:22px;
+    height:21px;
+}
+
+.icon-27 {
+    width:27px;
+    height:21px;
+}
+
+.icon-68 {
+    width:68px;
+    height:60px;
+}
+
+.icon-tick {
+    background:url('../images/icon-tick.png') no-repeat center center;
+}
+
+.icon-view {
+    background:url('../images/icon-view.png') no-repeat center center;
+}
+
+.icon-safety {
+    background:url('../images/icon-safety.png') no-repeat center center;
+}
+
+.icon-print {
+    background:url('../images/icon-print.png') no-repeat center center;
+}
+
+.icon-phone {
+    background:url('../images/icon-phone.png') no-repeat center center;
+}
+
+.icon-share {
+    background:url('../images/icon-share.png') no-repeat center center;
+}
+
+.icon-terrain {
+    background:url('../images/icon-terrain.png') no-repeat center center;
+}
+
+.icon-water {
+    background:url('../images/icon-water.png') no-repeat center center;
+}
+
+.icon-heat {
+    background:url('../images/icon-heat.png') no-repeat center center;
+}
+
+.icon-cold {
+    background:url('../images/icon-cold.png') no-repeat center center;
+}
+
+.icon-download {
+    width:20px;
+    height:18px;
+    background:url('../images/icon-download.png') no-repeat center center;
+}
+
+.icon-auction {
+    background:url('../images/icon-auction.png') no-repeat center center;
+    width:14px;
+    height:14px;
+    top:0;
+}
+

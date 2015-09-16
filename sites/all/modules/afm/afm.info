@@ -1,0 +1,11 @@
+name = Australian Frontline Machinery
+description = Australian Frontline Machinery Custom Module
+core = 7.x
+package = Australian Frontline Machinery
+version = 1.0.0
+
+
+; Information added by dottystylecreative packaging script on 2015-09-10
+version = "1.0"
+project = "dottystyle"
+datestamp = "1441939971"

@@ -1,0 +1,168 @@
+
+
+/* ==========================================================================
+   Author's custom animtion styles
+   ========================================================================== */
+
+/* LOADING ANIMATION */
+@-webkit-keyframes opacity {
+  0% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+  100% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    opacity: 0.3;
+  }
+}
+
+@-moz-keyframes opacity {
+  0% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+
+  100% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    opacity: 0.3;
+  }
+}
+
+@-webkit-keyframes opacity {
+  0% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+  100% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    opacity: 0.3;
+  }
+}
+
+@-moz-keyframes opacity {
+  0% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+  100% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    opacity: 0.3;
+  }
+}
+
+@-o-keyframes opacity {
+  0% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+  100% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    opacity: 0.3;
+  }
+}
+
+@keyframes opacity {
+  0% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+  100% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+    opacity: 0.3;
+  }
+}
+.engage-btn span {
+  -webkit-animation-name: opacity;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: opacity;
+  -moz-animation-duration: 1s;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-name: opacity;
+  -ms-animation-duration: 1s;
+  -ms-animation-iteration-count: infinite;
+
+}
+.engage-btn span.angle-2 {
+  -webkit-animation-delay: 100ms;
+  -moz-animation-delay: 100ms;
+  -ms-animation-delay: 100ms;
+  -o-animation-delay: 100ms;
+  animation-delay: 100ms;
+}
+.engage-btn span.angle-3 {
+  -webkit-animation-delay: 300ms;
+  -moz-animation-delay: 300ms;
+  -ms-animation-delay: 300ms;
+  -o-animation-delay: 300ms;
+  animation-delay: 300ms;
+
+}
+
+.subscribe-btn span {
+  -webkit-animation-name: opacity;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: opacity;
+  -moz-animation-duration: 1s;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-name: opacity;
+  -ms-animation-duration: 1s;
+  -ms-animation-iteration-count: infinite;
+
+}
+.subscribe-btn span.angle-2 {
+  -webkit-animation-delay: 100ms;
+  -moz-animation-delay: 100ms;
+  -ms-animation-delay: 100ms;
+  -o-animation-delay: 100ms;
+  animation-delay: 100ms;
+}
+.subscribe-btn span.angle-3 {
+  -webkit-animation-delay: 300ms;
+  -moz-animation-delay: 300ms;
+  -ms-animation-delay: 300ms;
+  -o-animation-delay: 300ms;
+  animation-delay: 300ms;
+
+}
+
+.hiding {
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+.visible {
+  filter: alpha(opacity=1);
+  opacity: 1;
+}
+
+/*
+@-webkit-keyframes wipe {
+    0% {
+        -webkit-mask-position: 0 0;
+    }
+    100% {
+        -webkit-mask-position: -1200px -1200px;
+    }
+}
+
+
+.hero-overlay {
+    -webkit-animation: wipe 6s infinite;
+    -webkit-animation-delay: 3s;
+    -webkit-animation-direction: alternate;
+    -webkit-mask-size: 2000px 2000px;
+    -webkit-mask-image: -webkit-gradient(linear, left top, right bottom, 
+            color-stop(0.00,  rgba(0,0,0,1)),
+            color-stop(0.45,  rgba(0,0,0,1)),
+            color-stop(0.50,  rgba(0,0,0,0)),
+            color-stop(0.55,  rgba(0,0,0,0)),
+            color-stop(1.00,  rgba(0,0,0,0)));
+}
+        
+
+
+*/
+
+

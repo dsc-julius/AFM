@@ -1,0 +1,119 @@
+.footer .copyright ul {
+	padding: 0px;
+	margin: 0px;
+}
+.footer .copyright ul li.leaf {
+	display: inline-block;
+	padding: 0px;
+	margin: 0px;
+}
+.footer .copyright ul li.leaf a {
+	border-right: 1px solid #fff;
+}
+.footer .copyright ul li.leaf:last-child a {
+	border: 0px;
+}
+
+.footer .footer-block ul li.leaf {
+    list-style-image: none;
+    list-style-type: none;
+    margin-left: 0px;
+}
+
+.contact #edit-submit {
+	border: 1px solid #ffcc00;
+    font-family: 'Gotham-Ultra', sans-serif;
+    font-size: 20px;
+    color: #ffcc00;
+    text-transform: uppercase;
+    background-color: #000;
+    padding: 10px 82px;
+    outline: none !important;
+    width: auto;
+}
+.resizable-textarea .grippie {
+	display: none;
+}
+
+#afm-newsletter-form .form-submit {
+	border: 1px solid #ffcc00;
+    font-family: 'Gotham-Ultra', sans-serif;
+    font-size: 20px;
+    color: #ffcc00;
+    text-transform: uppercase;
+    background-color: #000;
+    padding: 10px 0;
+}
+
+.basic-page {
+    margin-top: 131px;
+    position: relative;
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    z-index: 9;
+    background: url('../images/grundge_black.jpg') repeat;
+    background-color: #000;
+    padding: 90px 0;
+}
+
+.basic-page .page {
+	padding: 0px;
+}
+
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.overview-container ul li {
+    position: relative;
+}
+
+div.sharing {
+    position: absolute;
+    width: 271px;
+    height: 55px;
+    text-align: center;
+    background: transparent;
+    left: 100%;
+    top: 50%;
+    margin-top: -25%;
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid #ffcc00;
+    -moz-border-radius: 30px;
+    -moz-box-shadow: 2px 2px 4px #888;
+    display: none;
+}
+.sharing-wrapper:hover div.sharing {
+    display: inline-block;
+}
+
+.iframe-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.iframe-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

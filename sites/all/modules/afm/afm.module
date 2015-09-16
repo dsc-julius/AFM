@@ -1,0 +1,282 @@
+<?php
+function afm_init() {
+  //if (arg(0) == 'admin' || (arg(0) == 'node' && arg(1) == 'add')) {
+    $path = drupal_get_path('module', 'afm');
+    drupal_add_js($path . '/js/custom.scripts.js');
+  //}
+}
+
+function afm_admin() {
+    $form = array();
+
+    $form['address_1'] = array(
+      '#type' => 'textfield', 
+      '#name' => 'address_1',
+      '#title' => 'Address',
+      '#required' => true,
+      '#description' => t("Address 1"),
+      '#attributes' => array(
+        'class' => array('form-control')
+      ),
+      '#default_value' => variable_get('address_1', ''),
+    );
+    $form['address_2'] = array(
+      '#type' => 'textfield', 
+      '#name' => 'address_2',
+      '#title' => 'Address',
+      '#required' => true,
+      '#description' => t("Address 2"),
+      '#attributes' => array(
+        'class' => array('form-control')
+      ),
+      '#default_value' => variable_get('address_2', ''),
+    );
+    $form['phone'] = array(
+      '#type' => 'textfield', 
+      '#name' => 'phone',
+      '#title' => 'Address',
+      '#required' => true,
+      '#description' => t("Phone"),
+      '#attributes' => array(
+        'class' => array('form-control')
+      ),
+      '#default_value' => variable_get('phone', ''),
+    );
+    $form['fax'] = array(
+      '#type' => 'textfield', 
+      '#name' => 'fax',
+      '#title' => 'Address',
+      '#required' => true,
+      '#description' => t("Fax"),
+      '#attributes' => array(
+        'class' => array('form-control')
+      ),
+      '#default_value' => variable_get('fax', ''),
+    );
+
+
+    return system_settings_form($form);
+}
+
+function afm_menu(){
+  $items = array();
+
+  $items['admin/settings/afm'] = array(
+    'title' => 'Template Settings',
+    'description' => 'Template Information Customization',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('afm_admin'),
+    'access arguments' => array('administer afm settings'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+function afm_page_alter(&$page){
+  $node = menu_get_object();
+  if(drupal_get_path_alias() == 'node/add/homepage-settings'){
+    drupal_goto('node/21/edit');
+  }
+  elseif(drupal_get_path_alias() == 'node/add/auctions'){
+    drupal_goto('node/13/edit');
+  }
+  elseif(drupal_get_path_alias() == 'user'){
+    drupal_goto('user/login');
+  }
+  elseif(is_object($node) && $node->type == 'videos'){
+    drupal_goto('node/11');
+  }
+  elseif(is_object($node) && $node->type == 'vehicle'){
+    if(!empty($node) && !empty($node->field_vehicle_type['und']['0']['target_id'])) {
+      drupal_goto('node/'.$node->field_vehicle_type['und']['0']['target_id']);
+    }
+  }
+}
+
+
+/**
+*
+*   CONTACT FORM
+*
+**/
+function afm_contact_form($form_state) {
+    $form = array();    
+ 
+    $form['firstname'] = array(
+        '#title' => 'First Name',
+        '#type' => 'textfield',
+        '#required' => TRUE,
+        '#default_value' => '',
+        '#prefix' => '<div class="input-item">',
+        '#suffix' => '</div>',
+    );
+
+    $form['lastname'] = array(
+        '#title' => 'Last Name',
+        '#type' => 'textfield',
+        '#required' => TRUE,
+        '#default_value' => '',
+        '#prefix' => '<div class="input-item">',
+        '#suffix' => '</div>',
+    );
+ 
+    $form['email'] = array(
+        '#title' => 'Email',
+        '#type' => 'textfield',
+        '#required' => TRUE, 
+        '#prefix' => '<div class="input-item">',
+        '#suffix' => '</div>',
+    );
+    
+    $form['message'] = array(
+        '#type' => 'textarea',
+        '#title' => t('Message'),
+        '#attributes' => array(
+          'required' => 'true'
+        ),
+        '#required' => true,
+        '#prefix' => '<div class="input-item">',
+        '#suffix' => '</div><p class="disclosure">By clicking the ‘Submit’ button, you consent to the collection, use and disclosure of your personal <br>information in line with our <a href="/privacy">Privacy Policy.</a></p>',
+    );
+ 
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Submit',       
+    );
+ 
+    return $form;   
+}
+
+function afm_email_element_validate($mail) {
+  return (bool) filter_var($mail, FILTER_VALIDATE_EMAIL);
+}
+
+function afm_contact_form_validate($form, &$form_state) {
+    $email = $form_state['values']['email'];
+    if (trim($email) == '' || !afm_email_element_validate($email) ) {
+        form_set_error('email', 'Invalid Email Address.');
+    }
+}
+
+function afm_contact_form_submit($form,$form_state) {
+    $firstname = ucfirst(trim($form_state['values']['firstname']));    
+    $lastname = ucfirst(trim($form_state['values']['lastname'])); 
+    $email = trim($form_state['values']['email']);  
+    $message = trim($form_state['values']['message']);     
+
+    $report_data = array(
+        'firstname' => $firstname,
+        'lastname' => $lastname,
+        'email' => $email,
+        'message' => $message
+        );
+
+    $module = 'afm';
+    $key = 'contact';
+    $site_email = variable_get('site_mail', '');
+    $language = language_default();
+    $subject = 'AFM Contact Form Submission';
+    $body = 'REPORT BODY';
+    $params = array('report' => $report_data, 'body' => $body, 'subject' => $subject);
+    drupal_mail($module, $key, $site_email, $language, $params, $site_email, TRUE);
+    $_SESSION['contact-form'] = 'Message has been submitted.';
+}
+
+/**
+*
+*   Newsletter
+*
+**/
+function afm_newsletter_form($form_state) {
+    $form = array();    
+ 
+    $form['name'] = array(
+        '#title' => 'Name',
+        '#type' => 'textfield',
+        '#required' => TRUE,
+        '#default_value' => '',
+        '#prefix' => '<div>',
+        '#suffix' => '</div>',
+    );
+
+    $form['email'] = array(
+        '#title' => 'Email',
+        '#type' => 'textfield',
+        '#required' => TRUE, 
+        '#prefix' => '<div>',
+        '#suffix' => '</div>',
+    );
+    
+    $form['postcode'] = array(
+        '#title' => 'Postcode',
+        '#type' => 'textfield',
+        '#required' => TRUE,
+        '#default_value' => '',
+        '#prefix' => '<div>',
+        '#suffix' => '</div>',
+    );
+ 
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Sign Up',       
+    );
+ 
+    return $form;   
+}
+
+function afm_newsletter_form_validate($form, &$form_state) {
+    $email = $form_state['values']['email'];
+    if (trim($email) == '' || !afm_email_element_validate($email) ) {
+        form_set_error('email', 'Invalid Email Address.');
+    }
+}
+
+function afm_newsletter_form_submit($form,$form_state) {   
+    $name = ucfirst(trim($form_state['values']['name'])); 
+    $email = trim($form_state['values']['email']);  
+    $postcode = trim($form_state['values']['postcode']);     
+
+    $report_data = array(
+        'name' => $name,
+        'email' => $email,
+        'postcode' => $postcode
+        );
+
+    $module = 'afm';
+    $key = 'newsletter';
+    $site_email = variable_get('site_mail', '');
+    $language = language_default();
+    $subject = 'Newsletter Form Submission';
+    $body = 'REPORT BODY';
+    $params = array('report' => $report_data, 'body' => $body, 'subject' => $subject);
+    drupal_mail($module, $key, $site_email, $language, $params, $site_email, TRUE);
+    $_SESSION['newsletter-form'] = 'Message has been submitted.';
+}
+
+function afm_mail($key, &$message, $params) {
+    switch ($key) {
+        case 'contact':
+            $message['subject'] = $params['subject'];
+            $body = '
+            First Name: '.$params['report']['firstname'].'<br>
+            Last Name: '.$params['report']['lastname'].'<br>
+            Email: '.$params['report']['email'].'<br>
+            Message: '.$params['report']['message'].'<br>
+            ';
+            $message['body'][] = $body;
+            $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
+            break;
+
+        case 'newsletter':
+            $message['subject'] = $params['subject'];
+            $body = '
+            Name: '.$params['report']['name'].'<br>
+            Email: '.$params['report']['email'].'<br>
+            Postcode: '.$params['report']['postcode'].'<br>
+            ';
+            $message['body'][] = $body;
+            $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed';
+            break;
+    }
+}
