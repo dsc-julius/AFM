@@ -7,6 +7,7 @@ $nids = db_select('node', 'n')
     ->execute()
     ->fetchCol();
 $nodes = node_load_multiple($nids);
+$modals = '';
 
 $models = array();
 foreach ($nodes as $key => $data) {
@@ -136,12 +137,18 @@ if(!empty($node->field_hero_image['und']['0']['uri'])) {
                                     <span class="fa fa-angle-right angle-2"></span>
                                     <span class="fa fa-angle-right angle-3"></span>
                                 </a>
-                            </div>
-                            <img class="m-img" src="<?php echo $theme_url; ?>/images/available-img1.jpg">
+                            </div> 
+                            <?php if(isset($v->field_image['und'])){ ?>
+                                <img class="m-img" src="<?php echo file_create_url($v->field_image['und']['0']['uri']); ?>" >
+                            <?php }else{ ?>
+                                <img class="m-img" src="<?php echo $theme_url; ?>/images/available-img1.jpg">
+                            <?php } ?>
                         </div>
                         <div class="model-desc">
                             <h1><?php echo $v->title; ?></h1>
-                            <p><?php echo $v->body['und']['0']['value']; ?></p>
+                            <div class="desc-content vehicle-type-content">
+                                <p><?php echo $v->body['und']['0']['value']; ?></p>
+                            </div>
                             <?php if(!empty($v->field_safety_specs)) { ?><a href="<?php echo file_create_url($v->field_safety_specs['und']['0']['uri']); ?>" class="download"><i class="icon icon-download"></i>Download spec sheet</a><?php } ?>
                             <a href="#" class="btn" data-toggle="modal" data-target="#newsletter-sign-up">Get Intel First</a>
                         </div>
@@ -154,7 +161,9 @@ if(!empty($node->field_hero_image['und']['0']['uri'])) {
                         </div>
                         <div class="model-desc">
                             <h1><?php echo $v->title; ?></h1>
-                            <p><?php echo $v->body['und']['0']['value']; ?></p>
+                            <div class="desc-content vehicle-type-content">
+                                <p><?php echo $v->body['und']['0']['value']; ?></p>
+                            </div>
                             <?php if(!empty($v->field_safety_specs)) { ?><a href="<?php echo file_create_url($v->field_safety_specs['und']['0']['uri']); ?>" class="download"><i class="icon icon-download"></i>Download spec sheet</a><?php } ?>
                             <a href="<?php echo url(drupal_get_path_alias('node/12')); ?>" class="btn">Go To Auction</a>
                         </div>
@@ -212,18 +221,18 @@ if(!empty($node->field_hero_image['und']['0']['uri'])) {
                                 </a>
                             </div>
                         </div>  
-                        <div class="modal fade" id="video-<?php echo $k; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <?php $modals .= '<div class="modal fade" id="video-'.$k.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <div class="modal-content">
                                     <div class="modal-body iframe-wrapper">
-                                        <?php echo $iframe; ?>
+                                        '.$iframe.'
                                     </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
+                                </div>
+                            </div>
+                        </div>'; ?>
                     <?php if((($k % 2) == 0) || (($k) == count($videos))) { ?>
                     </div>
                     <?php } ?>
@@ -235,3 +244,4 @@ if(!empty($node->field_hero_image['und']['0']['uri'])) {
     <script type="text/javascript">var switchTo5x=true;</script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
     <script type="text/javascript">stLight.options({publisher: "1b7dd0ba-60c0-48ca-a506-b9d59c1fa42f", doNotHash: true, doNotCopy: true, hashAddressBar: false});</script>
+    <?php echo $modals; ?>

@@ -25,10 +25,13 @@
               foreach ($nodes as $key => $data) {
                 $class = ($count == $key && $odd) ? 'col-lg-12 col-md-12 col-sm-12' : 'col-lg-6 col-md-6 col-sm-6';
                 $image = ($data->field_featured['und']['0']['uri']) ? file_create_url($data->field_featured['und']['0']['uri']) : drupal_get_path('theme','afm') . '/images/v-img1.jpg';
+                $filename_d = ($data->field_featured) ? file_create_url($data->field_featured['und']['0']['uri']) : drupal_get_path('theme','afm') . '/images/v-img1.jpg';
+                $filename_m = ($data->field_featured) ? file_create_url($data->field_featured['und']['0']['uri']) : drupal_get_path('theme','afm') . '/images/mobile-v-img1.jpg';
+               
             ?>
                 <div class="vehicle-row-item <?php echo $class; ?> col-xs-12 animated hiding" data-animation="fadeIn" data-delay="100">
                     <a href="<?php echo url(drupal_get_path_alias('node/' . $data->nid), array('absolute' => TRUE)) ?>" class="modal-btn">
-                        <img src="<?php echo $image; ?>">
+                        <img src="<?php echo $image; ?>" data-desktop-image="<?php echo $filename_d; ?>" data-mobile-image="<?php echo $filename_m; ?>">
                         <div class="content">
                             <h3><?php echo $data->title; ?></h3>
                             <p>Click to view range</p>

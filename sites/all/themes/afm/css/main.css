@@ -82,7 +82,7 @@
         -moz-transition: all 0.5s ease-in-out;
         -o-transition: all 0.5s ease-in-out;
         transition: all 0.5s ease-in-out;
-        z-index:9999;
+        z-index:9998;
         visibility: hidden;
     }
 
@@ -130,6 +130,9 @@
         padding: 8px 65px;
     }
 
+
+
+
     .btn-close {
         position:absolute;
         right:74px;    
@@ -173,10 +176,8 @@
     .mobile-logo {
         visibility: hidden;
         width: 50px;
-        margin: 3px 20px;
-
+        margin: 3px 20px 0 50px;
         position:absolute;
-        top: 0px;
     }
 
     .mobile-logo img {
@@ -235,6 +236,10 @@
         transition: all 0.7s cubic-bezier(0.95, 0.05, 0.795, 0.035);
         visibility: visible;
     }
+
+    .sticky-hide .mobile-logo {
+        visibility:visible;
+    }
  
     .sticky {
         top:0;
@@ -255,9 +260,6 @@
         background-color: #ffcc00;
         height: 60px;
     }
-    .sticky-hide .mobile-logo  {
-        visibility: visible;
-    }
     .sticky .mobile-logo  {
         visibility: visible;
         top:0;
@@ -270,6 +272,10 @@
         transition: all 0.5s ease-in-out;
         position:fixed;
         z-index:999;
+    }
+
+    .intel-close.animate-close .navigation-active .navigation {
+        position:absolute !important;
     }
 
     .main-header {
@@ -559,7 +565,7 @@
     .navigation .menu {
         list-style-type: none;
         margin:0;
-        padding:0;
+        padding:5px 0;
         text-align:center;
         position:relative;
     }
@@ -592,13 +598,14 @@
         display:block;
         width:100%;
         margin: 0 -24.5px;
-        bottom:-40px;
+        bottom:-45px;
     }
 
     .navigation .menu > li.expanded:hover > a:after {
-        bottom:-54px;
+        bottom:-59px;
         height:15px;
         background-color:#ffcc00;
+         z-index:99991;
     }
 
     .navigation .menu > li.active > a:after {
@@ -613,7 +620,7 @@
         display:block;
         width:100%;
         margin: 0 -24.5px;
-        bottom:-40px;
+        bottom:-45px;
         z-index:9;
         -webkit-transition: all 0.3s ease-in-out;
         -o-transition: all 0.3s ease-in-out;
@@ -868,7 +875,7 @@
 
     .auction-timer-wrapper .timer .dt-num {
         font-size:65px;
-        color:#fff!important;
+        color:#fff !important;
         width:100px;
         text-align: center;
     }
@@ -994,7 +1001,7 @@
         width: 800px;
     }
     .about .truck img {
-        width:100%;
+        width:91%;
     }
 
     .vehicle-type {
@@ -1026,6 +1033,13 @@
         padding:35px 0 68px;
     }
 
+    .footer-wrap .container > div {
+        padding:0 !important;
+    }
+
+    .footer .footer-block:last-child {
+        padding-right:0;
+    }
     .footer h1 {
         font-size:20px;
         color:#ffcc00;
@@ -1047,6 +1061,7 @@
 
     .footer .footer-block {
         vertical-align: top;
+        min-height: 287px;
     }
 
     .footer-block p a {
@@ -1084,7 +1099,7 @@
         margin-bottom:25px;
     }
 
-    .footer label {
+    .footer label, .modal-content label {
         font-family: 'Gotham-Bold', sans-serif;
         font-size:12px;
         color:#fff;
@@ -1092,7 +1107,7 @@
         margin-bottom:5px;
     }
 
-    .footer input {
+    .footer input, .modal-content input[type='text'] {
         border:1px solid #4d4d4d;
         background-color: transparent;
         font-family: 'Gotham-Medium', sans-serif;
@@ -1102,7 +1117,7 @@
         -webkit-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease;
-        width:100%;
+        width:99%;
         margin-bottom:2px;
     }
 
@@ -1110,12 +1125,12 @@
         width:50%;
     }
 
-    .footer input:focus {
+    .footer input:focus, .modal-content input[type='text']:focus {
         border:1px solid #B1B1B1 !important;
         outline: none;
     }
 
-    .footer button {
+    .footer button, .modal-content input[type='submit'] {
         border: 1px solid #ffcc00;
         font-family: 'Gotham-Ultra', sans-serif;
         font-size:20px;
@@ -1126,7 +1141,9 @@
         width:250px;
         margin-bottom:2px;
     }
-
+    .footer .social-media h1 {
+        margin-bottom:15px !important;
+    }
     .footer .copyright {
         background-color:#333333;
         padding:20px 0;
@@ -1166,6 +1183,27 @@
         color:#ffcc00;
         text-decoration: none;
     }
+
+    .footer .social-links li {
+        display:inline-block;
+    }
+
+    .footer .social-links li a {
+        background-color: #fff;
+        width: 32px;
+        height: 32px;
+        display: table;
+        text-align: center;
+        font-size:16px !important;
+    }
+
+    .footer .social-links li a .fa {
+        color: #000;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+
 
     .container {
         max-width:1200px;
@@ -1269,7 +1307,7 @@
     }
 
     .vehicle-type .vehicle-item:hover img {
-          filter: initial;
+        filter: initial;
         -webkit-filter: grayscale(0%);
     }
 
@@ -1405,9 +1443,13 @@
         font-weight:normal;
     }
 
-    .btn:hover {
+    .btn:hover, .btn:focus {
         color:#ffcc00;
+        border: 1px solid #ffcc00;
+        outline: none;
     }
+
+
 
 
     .section-row {
@@ -1649,6 +1691,11 @@
         margin:20px 0 0;
         text-align:center;
     }
+ 
+    .vehicle-type-content ul{
+        list-style-type: disc; 
+        text-align: left;
+    } 
 
     .section-parallax ul li {
         font-family: 'Gotham-Bold', sans-serif;
@@ -1658,7 +1705,9 @@
         color:#fff;
         text-transform: uppercase;
     }
-
+    .vehicle-type-content ul li{
+        display: block;
+    }
 
     .limit {
         display:inline-block;
@@ -1763,7 +1812,8 @@
     .model-item .model-desc .download {
         color:#ffcc00;
         display:block;
-        font-size: 16px;
+        font-size:16px;
+        margin-top:20px;
     }
 
     .model-item .model-desc .btn {
@@ -1773,9 +1823,24 @@
         padding: 20px 40px;
     }
 
+    .desc-content ul {
+        text-align: left !important;
+        list-style-type: disc;
+    }
+
+    .desc-content ul li {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        text-align: left;
+        line-height: 2;
+        margin: 0 0 0 18px;
+        display:list-item !important;
+        padding: 0;
+    }
+
     .notice-soon {
         background: url('../images/auction-bg.png') no-repeat center center;
-        width: 405px;
+        width: 380px;
         height: 190px;
         position: absolute;
         left: 50%;
@@ -1897,7 +1962,7 @@
 
     .video-item .video {
         margin-top:25px;
-        position: relative;
+        position:relative;
     }
     .wrapper-2 .logo, .wrapper-2 .hamburger {
         display:none;
@@ -1954,9 +2019,17 @@
 
      .wrapper-2 .navigation {
         top:0;
-        position:absolute;
+        position:fixed;
     }
 
+    .wrapper-2.intel-active .navigation {
+        position:absolute !important;
+        top:0;
+    }
+
+    .wrapper-2.intel-hide .navigation {
+        position:fixed !important;
+    }
 
     #vehicle-overview .vehicle-type {
         position:relative;
@@ -2061,7 +2134,7 @@
 
     .vehicle-row-item .content {
         width: 100%;
-        height: 25%;
+        height: 30%;
         display:block;
         overflow: hidden;
         margin: auto;
@@ -2158,7 +2231,7 @@
     .support .btn {
         margin:5px 0 0;
         white-space: normal;
-        width:100%;
+        width:99%;
         padding:19px 20px;
         font-size:16px;
     }
@@ -2342,6 +2415,8 @@
         vertical-align: middle;
     }
 
+
+
     .contact .icon {
         top:3px;
     }
@@ -2411,6 +2486,11 @@
         padding:90px 0;
         border-top:1px solid #000;
 
+    }
+
+    .upcoming-auctions .container div {
+        padding-left:0 !important;
+        padding-right:0 !important;
     }
 
     .upcoming-auctions h2 {
@@ -2607,6 +2687,9 @@
     }
 
     @media (max-width: 1200px) {
+        .overview-container ul li:nth-child(n+2) {
+            padding: 0 12px 0 0 !important;
+        }
         .desktop-logo {
             display:none;
         }
@@ -2904,11 +2987,17 @@
 
          .wrapper-2 .navigation {
             top:-100%;
+            position:fixed !important;
+        }
+
+        .wrapper-2.intel-active .navigation {
+            position:fixed !important;
         }
 
 
         .wrapper-2.intel-active .navigation-active .navigation {
             top:100px;
+            position:fixed !important;
         }
         #contact-us .contact, #showroom .showrooms {
             margin-top:-100px;
@@ -3018,6 +3107,18 @@
 
         h1 {
             font-size:40px;
+        }
+        .footer .copyright p {
+            float:none;
+        }
+        .footer .copyright .terms-link {
+            float:none;
+        }
+
+        .footer .copyright ul {
+            padding: 0px;
+            margin: 0px auto;
+            text-align: center;
         }
 
 
@@ -3169,7 +3270,7 @@
             padding:30px 0 !important;
         }
         .auction-timer {
-            background: url('../img/auction-bg2.png') no-repeat center center;
+            background: url('../images/auction-bg2.png') no-repeat center center;
         }
         .contact .showroom {
             padding:0;
@@ -3628,11 +3729,6 @@
             top:75px !important;
         }
         */
-
-
-        .mobile-logo {
-            left:10px;
-        }
         .header {
             top:60px;
         }
@@ -4250,3 +4346,64 @@
     visibility:visible;
                                 
 }
+
+.modal {
+    z-index:9999;
+}
+
+
+.modal-dialog {
+
+}
+
+.modal-content {
+    -webkit-border-radius:0 !important;
+    -moz-border-radius:0 !important;
+    border-radius:0 !important;
+    background-color:#000 !important;
+        border: 1px solid #4D4D4D !important;
+}
+
+.modal-header {
+    border:0 !important;
+}
+
+.modal-header .close {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    color: #ffcc00;
+    text-shadow: initial;
+    filter: alpha(opacity=100);
+    opacity: 1;
+    position:relative;
+    z-index:999;
+}
+
+
+
+.panel {
+    box-shadow: initial !important;
+    background-color:transparent;
+}
+.panel-title>a, .panel-title>a:hover, .panel-title>a:focus {
+    text-decoration: none;
+    outline: 0;
+}
+
+.panel-title {
+    font-family: 'Gotham-Ultra', sans-serif;
+    font-size: 20px;
+    color: #ffcc00;
+    text-transform: uppercase;
+    padding:10px 0;
+    border-bottom:1px solid #444444;
+}
+
+.panel-collapse p {
+    margin: 0 0 10px !important;
+}
+
+
+
+

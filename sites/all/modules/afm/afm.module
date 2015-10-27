@@ -12,7 +12,7 @@ function afm_admin() {
     $form['address_1'] = array(
       '#type' => 'textfield', 
       '#name' => 'address_1',
-      '#title' => 'Address',
+      '#title' => 'Address 1',
       '#required' => true,
       '#description' => t("Address 1"),
       '#attributes' => array(
@@ -23,7 +23,7 @@ function afm_admin() {
     $form['address_2'] = array(
       '#type' => 'textfield', 
       '#name' => 'address_2',
-      '#title' => 'Address',
+      '#title' => 'Address 2',
       '#required' => true,
       '#description' => t("Address 2"),
       '#attributes' => array(
@@ -34,7 +34,7 @@ function afm_admin() {
     $form['phone'] = array(
       '#type' => 'textfield', 
       '#name' => 'phone',
-      '#title' => 'Address',
+      '#title' => 'Phone',
       '#required' => true,
       '#description' => t("Phone"),
       '#attributes' => array(
@@ -45,13 +45,63 @@ function afm_admin() {
     $form['fax'] = array(
       '#type' => 'textfield', 
       '#name' => 'fax',
-      '#title' => 'Address',
+      '#title' => 'Fax',
       '#required' => true,
       '#description' => t("Fax"),
       '#attributes' => array(
         'class' => array('form-control')
       ),
       '#default_value' => variable_get('fax', ''),
+    );
+    $form['facebook'] = array(
+      '#type' => 'textfield', 
+      '#name' => 'facebook',
+      '#title' => 'Facebook',
+      '#description' => t("Facebook Page"),
+      '#attributes' => array(
+        'class' => array('form-control')
+      ),
+      '#default_value' => variable_get('facebook', ''),
+    );
+    $form['twitter'] = array(
+      '#type' => 'textfield', 
+      '#name' => 'twitter',
+      '#title' => 'Twitter',
+      '#description' => t("Twitter Page"),
+      '#attributes' => array(
+        'class' => array('form-control')
+      ),
+      '#default_value' => variable_get('twitter', ''),
+    );
+    $form['linkedin'] = array(
+      '#type' => 'textfield', 
+      '#name' => 'linkedin',
+      '#title' => 'Linkedin',
+      '#description' => t("Linkedin Page"),
+      '#attributes' => array(
+        'class' => array('form-control')
+      ),
+      '#default_value' => variable_get('linkedin', ''),
+    );
+    $form['google-plus'] = array(
+      '#type' => 'textfield', 
+      '#name' => 'google-plus',
+      '#title' => 'Google Plus',
+      '#description' => t("Google Plus Page"),
+      '#attributes' => array(
+        'class' => array('form-control')
+      ),
+      '#default_value' => variable_get('google-plus', ''),
+    );
+    $form['pinterest-p'] = array(
+      '#type' => 'textfield', 
+      '#name' => 'pinterest-p',
+      '#title' => 'Pinterest',
+      '#description' => t("Pinterest Page"),
+      '#attributes' => array(
+        'class' => array('form-control')
+      ),
+      '#default_value' => variable_get('pinterest-p', ''),
     );
 
 
@@ -84,12 +134,12 @@ function afm_page_alter(&$page){
   elseif(drupal_get_path_alias() == 'user'){
     drupal_goto('user/login');
   }
-  elseif(is_object($node) && $node->type == 'videos'){
-    drupal_goto('node/11');
-  }
-  elseif(is_object($node) && $node->type == 'vehicle_parts'){
-    drupal_goto('node/26');
-  }
+  // elseif(is_object($node) && $node->type == 'videos'){
+  //   drupal_goto('node/11');
+  // }
+  // elseif(is_object($node) && $node->type == 'parts'){
+  //   drupal_goto('node/26');
+  // }
   // elseif(is_object($node) && $node->type == 'vehicle'){
   //   if(!empty($node) && !empty($node->field_vehicle_type['und']['0']['target_id'])) {
   //     drupal_goto('node/'.$node->field_vehicle_type['und']['0']['target_id']);

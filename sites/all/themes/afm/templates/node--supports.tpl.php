@@ -5,8 +5,8 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">    
 
                     <h1 class="animated hiding" data-animation="fadeIn" data-delay="100"><?php echo $node->title; ?><span class="border"></span></h1>
-
-                    <p class="animated hiding" data-animation="fadeIn" data-delay="200"><?php echo $node->body['und']['0']['value']; ?></p>
+                   
+                    <div class="animated hiding" data-animation="fadeIn" data-delay="200"><?php echo $node->body['und']['0']['value']; ?></div>
 
                     <hr class="animated hiding" data-animation="fadeIn" data-delay="250">
 

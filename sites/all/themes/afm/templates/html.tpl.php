@@ -20,8 +20,10 @@
     $alias = (drupal_get_path_alias()) ? drupal_get_path_alias() : ''; 
     $alias = (drupal_is_front_page()) ? 'home' : $alias;
     $alias = (is_object($node) && $node->nid == '15') ? 'contact-us' : $alias;
+    $alias = (is_object($node) && $node->nid == '9') ? 'contact-us' : $alias;
     $alias = (is_object($node) && $node->nid == '31') ? 'contact-us' : $alias;
-    $alias = (is_object($node) && ($node->nid == '26' || $node->nid == '33')) ? 'vehicle-overview' : $alias;
+    $alias = (is_object($node) && $node->nid == '26' || $node->nid == '69') ? 'vehicle' : $alias;
+    $alias = (is_object($node) && ($node->nid == '33')) ? 'vehicle-overview' : $alias;
 
     if(is_object($node) && $node->nid == 12) {
       $auctions = node_load(13);
@@ -39,8 +41,13 @@
 
     $nid = (is_object($node)) ? $node->nid : NULL; 
     $class = ($nid && $node->type == 'page' || $alias == 'user/login' || $node->nid == '31' || $node->nid == '33') ? 'wrapper-2' : '';
+    $class = ($nid && $node->type == 'page' || $node->nid == '26') ? '' : $class;
+    
+    $wrapper = ($node->nid == '11' || $node->nid == '12' || $node->nid == '15' || $node->nid == '9' || $node->nid == '32') ? 'wrapper-2' : '';
+    
+
   ?>
-  <div id="<?php echo $alias; ?>" class="wrapper <?php echo $class; ?>">
+  <div id="<?php echo $alias; ?>" class="wrapper <?php echo $class; ?> <?php echo $wrapper;?>">
     <?php include('includes/header-newsletter-sign-up.tpl.php'); ?>
     <div class="header clearfix">
       <div class="main-header">
@@ -51,7 +58,17 @@
               <span class="bar-2 patty-2"></span>
               <span class="bar-3 patty-3"></span>
           </a>
-      </div>           
+      </div>     
+      
+      <div class="fixed-header">
+          <a href="<?php echo url(drupal_get_path_alias('<front>')); ?>" class="mobile-logo"><img src="<?php echo $theme_url; ?>/images/logo-nav.jpg"></a>
+          <a href="#" class="hamburger">
+              <span class="bar-1 patty-1"></span>
+              <span class="bar-2 patty-2"></span>
+              <span class="bar-3 patty-3"></span>
+          </a>
+      </div>      
+
       <div class="navigation clearfix">
           <a href="<?php echo url(drupal_get_path_alias('<front>')); ?>" class="sub-logo"><img src="<?php echo $theme_url; ?>/images/logo-nav.jpg"></a>
           <?php $menu = menu_tree('menu-header-menu'); print drupal_render($menu); ?>
@@ -71,8 +88,21 @@
                           <h1>Contact Us</h1>
                           <p> <?php echo variable_get('address_1', ''); ?><br>
                               <?php echo variable_get('address_2', ''); ?><br>
-                              Phone: <?php echo variable_get('phone', ''); ?><br>
-                              Fax: <?php echo variable_get('fax', ''); ?></p>
+                              <a href="tel:<?php echo variable_get('phone', ''); ?>">Phone: <?php echo variable_get('phone', ''); ?></a><br>
+                              <a href="tel:<?php echo variable_get('fax', ''); ?>">Fax: <?php echo variable_get('fax', ''); ?></a></p>
+                              
+                              <div class="social-media">
+                                  <h1>Follow Us</h1>
+                                  <ul class="social-links clearfix">
+                                      <li><a href="<?php echo variable_get('facebook', ''); ?>"><i class="fa fa-facebook"></i></a></li>
+                                      <li><a href="<?php echo variable_get('twitter', ''); ?>"><i class="fa fa-twitter"></i></a></li>
+                                      <li><a href="<?php echo variable_get('linkedin', ''); ?>"><i class="fa fa-linkedin"></i></a></li>
+                                      <li><a href="<?php echo variable_get('google-plus', ''); ?>"><i class="fa fa-google-plus"></i></a></li>
+                                      <li><a href="<?php echo variable_get('pinterest-p', ''); ?>"><i class="fa fa-pinterest-p"></i></a></li>
+                                      <li><a href="javascript: void(0);" data-toggle="modal" data-target="#newsletter-sign-up"><i class="fa fa-envelope"></i></a></li>
+                                  </ul>
+                              </div>
+
                       </div>
                       <div class="footer-block col-lg-3 col-md-3 col-sm-6 col-xs-12 animated hiding" data-animation="fadeIn" data-delay="300">
                           <h1>Vehicle Range</h1>
@@ -117,7 +147,7 @@
           </div>
           <div class="copyright">
               <div class="container clearfix">
-                  <p>australian frontline machinery 2015</p>
+                  <p>&copy; 2015 Australian Frontline Machinery. All rights reserved. Australian National Disposals – Lic. No. MD044393</p>
                   <div class="terms-link">
                     <?php $menu = menu_tree('menu-footer-menu'); print drupal_render($menu); ?>
                   </div>
@@ -129,6 +159,7 @@
   <?php print $scripts; ?>
   <?php include('includes/countdowntimer-script.tpl.php'); ?>
   <?php include('includes/modal-newsletter-sign-up.tpl.php'); ?>
+  <?php include('includes/modal-site-game.tpl.php'); ?>
   <?php print $page_bottom; ?>
 </body>
 </html>

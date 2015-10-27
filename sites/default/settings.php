@@ -217,11 +217,11 @@ $databases = array (
   array (
     'default' => 
     array (
-      'database' => 'afm',
+      'database' => 's4d',
       'username' => 'root',
       'password' => 'root',
       'host' => 'localhost',
-      'port' => '',
+      'port' => '3306',
       'driver' => 'mysql',
       'prefix' => 'afm_',
     ),
@@ -280,7 +280,7 @@ $drupal_hash_salt = 'SCWb_ibq2bRAxOY7N4q2qpGcslKlUok4xsfgeXINdBk';
  * It is not allowed to have a trailing slash; Drupal will add it
  * for you.
  */
-# $base_url = 'http://www.example.com';  // NO trailing slash!
+$base_url = 'http://localhost/Simply4doctors.com.au';  // NO trailing slash!
 
 /**
  * PHP settings:

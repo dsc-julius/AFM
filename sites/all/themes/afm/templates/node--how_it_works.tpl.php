@@ -24,11 +24,8 @@
                     <h4><?php echo $entry->field_title['und']['0']['value']; ?></h4>
                     <p><?php echo $entry->field_short_description['und']['0']['value']; ?></p>
                     <?php 
-                    if(!empty($entry->field_show_button)) {
-                      if($entry->field_show_button['und']['0']['value'] == 'View All Vehicles')
-                        echo '<a href="' . url(drupal_get_path_alias('node/11'), array('absolute' => TRUE)) . '" class="btn">View All Vehicles</a>';
-                      elseif($entry->field_show_button['und']['0']['value'] == 'Get The Intel')
-                        echo '<a href="#" class="btn" data-toggle="modal" data-target="#newsletter-sign-up">Get The Intel</a>';
+                    if(!empty($entry->field_button_label) && !empty($entry->field_link_to_page)) {
+                        echo '<a href="' . $entry->field_link_to_page['und']['0']['value'] . '" class="btn">' . $entry->field_button_label['und']['0']['value'] . '</a>';
                     }
                     ?>
                 </div>
@@ -38,7 +35,7 @@
                 }
             } 
             ?>
-              <h1 class="animated hiding" data-animation="fadeIn" data-delay="600">What's Next?<span>Check Our Vehicle Range</span></h1>
+              <h1 id="check-showroom" class="animated hiding" data-animation="fadeIn" data-delay="600">What's Next?<span>Check Our Vehicle Range</span></h1>
           </div>
         </div>
         <div class="vehicle-container section-row clearfix">
@@ -55,7 +52,8 @@
               $count = count($nodes);
               foreach ($nodes as $key => $data) {
                 $class = ($count == $key && $odd) ? 'col-lg-12 col-md-12 col-sm-12' : 'col-lg-6 col-md-6 col-sm-6';
-                $image = ($data->field_featured['und']['0']['uri']) ? file_create_url($data->field_featured['und']['0']['uri']) : drupal_get_path('theme','afm') . '/images/v-img1.jpg';
+                $image = (!empty($data->field_featured)) ? file_create_url($data->field_featured['und']['0']['uri']) : drupal_get_path('theme','afm') . '/images/v-img1.jpg';
+                $image = (!empty($data->field_featured)) ? file_create_url($data->field_featured['und']['0']['uri']) : drupal_get_path('theme','afm') . '/images/v-img1.jpg';
             ?>
                 <div class="vehicle-row-item <?php echo $class; ?> col-xs-12 animated hiding" data-animation="fadeIn" data-delay="100">
                     <a href="<?php echo url(drupal_get_path_alias('node/' . $data->nid), array('absolute' => TRUE)) ?>" class="modal-btn">

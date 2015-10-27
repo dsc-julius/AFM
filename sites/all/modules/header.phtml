@@ -1,0 +1,200 @@
+<div id="mobile-nav-toggle" class="visible-sm visible-xs">
+    <a href="#">
+        <div class="default">
+            <img src="<?php echo $theme_base_url; ?>/images/icon_menu_mobile.png" width="64" height="53" alt="Menu">
+        </div>
+        <div class="active">
+            <img src="<?php echo $theme_base_url; ?>/images/icon_close.png" width="64" height="53" alt="Close">
+        </div>
+    </a>
+</div>
+
+<div id="mobile-menu" class="navigation visible-sm visible-xs">
+    <div class="mobile-menu-wrapper">
+        <div class="mobile-search">
+            <div class="mobile-search-container">
+                <form action="<?php echo $site_base_url; ?>/general-search" method="get" class="" role="search">
+                    <div class="form-group">
+                        <input name="keyword" type="text" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+            </div>
+        </div>
+        <ul class="navigation-menu">
+            <?php if($user->uid){ // Somebody's Logged in ?>  
+            <li class="has-child darker-gray"><a href="#">
+                <span class="fa fa-caret-down"></span>
+                <img src="<?php echo $theme_base_url; ?>/images/icon_nav_account_hover.png" width="13" height="15" class="hover">
+                Welcome <?php echo $user->data['firstname'] . ' ' . $user->data['lastname']; ?>
+                </a>
+                <ul>
+                    <?php if(in_array('administrator', $user->roles) || in_array('manager', $user->roles) || in_array('sales representative', $user->roles) || (in_array('doctor', $user->roles) && $user->data['verification'])) { ?>
+                    <li><a href="<?php echo $site_base_url; ?>/manage-account/<?php echo $user->uid; ?>">My Account</a></li>
+                    <?php } ?>
+                    <?php if(in_array('sales representative', $user->roles)){ ?>
+                    <li><a href="<?php echo $site_base_url; ?>/dashboard">My Dashboard</a></li>
+                    <?php } ?>
+                    <li><a href="<?php echo $site_base_url; ?>/user/logout">Logout</a></li>
+                </ul>
+            </li>
+            <?php }else{ ?>
+            <li class="darker-gray"><a href="#" data-toggle="modal" data-target="#modal-login">
+                <img src="<?php echo $theme_base_url; ?>/images/icon_nav_account_hover.png" width="13" height="15" class="hover">
+                &nbsp;
+                Login
+            </a></li>
+            <?php } ?>
+            <li class="has-child <?php echo (isset($node->type) && ($node->type == "therapy_area" || $node->type == "condition")) ? 'active': ''; ?>">
+                <a href="#">Therapy Area</a>
+                <ul <?php echo (isset($node->type) && ($node->type == "therapy_area" || $node->type == "condition")) ? 'style="display: block;"': ''; ?>>
+                    <?php foreach(Astrazeneca_Data::getTherapyAreas() as $therapy_area){ 
+                      $url_path = $site_base_url . '/' . drupal_get_path_alias('node/' . $therapy_area->nid);
+                      $nid = 0;
+                      if(isset($node->type)){
+                        if($node->type == "therapy_area"){
+                            $nid = $node->nid;
+                        }else if($node->type == "condition"){
+                            $condition_details = node_load($node->nid);
+                            $nid = isset($condition_details->field_therapy_areas['und']) ? $condition_details->field_therapy_areas['und'][0]['target_id'] : 0;
+                        } 
+                      }
+                    ?>
+                    <li class="<?php echo ((isset($node->type) && ($node->type == "therapy_area" || $node->type == "condition")) && ($therapy_area->nid == $nid)) ? 'active': ''; ?>">
+                         <?php if($user->uid != 0){ ?>
+                        <a href="<?php echo $url_path; ?>"><?php echo $therapy_area->title; ?></a>
+                        <?php }else{ ?>
+                        <a href="#" data-toggle="modal" data-target="#modal-login"><?php echo $therapy_area->title; ?></a>
+                        <?php  } ?> 
+                    </li>
+                    <?php } ?>
+                     
+                </ul>
+            </li>
+            
+            <?php if($user->uid != 0){ ?>
+                <li class="<?php echo ((isset($node->type) && $node->type == "medicine") || current_path() == "medicine") ? 'active': ''; ?>"><a href="<?php echo $site_base_url; ?>/medicine">Medicines</a></li>
+                <li class="<?php echo (current_path() == "samples-resources") ? 'active': ''; ?>"><a href="<?php echo $site_base_url; ?>/samples-resources">Samples &amp; Resources</a></li>
+                <li class="<?php echo (current_path() == "events-and-webcasts") ? 'active': ''; ?>"><a href="<?php echo $site_base_url; ?>/events-and-webcasts">Events & Webcasts</a></li>
+            <?php }else{ ?>
+                <li class="<?php echo ((isset($node->type) && $node->type == "medicine") || current_path() == "medicine") ? 'active': ''; ?>"><a href="#" data-toggle="modal" data-target="#modal-login">Medicines</a></li> 
+                <li class="<?php echo (current_path() == "samples-resources") ? 'active': ''; ?>"><a href="#" data-toggle="modal" data-target="#modal-login">Samples &amp; Resources</a></li>
+                <li class="<?php echo (current_path() == "events-and-webcasts") ? 'active': ''; ?>"><a href="#" data-toggle="modal" data-target="#modal-login">Events & Webcasts</a></li>
+            <?php  } ?> 
+            <li class="<?php echo (current_path() == "contact-us" || current_path() == "contact-us/technical-issue") || (current_path() == "adverse-event/report/step-1") || (current_path() == "adverse-event/report/step-2") || (current_path() == "adverse-event/report/step-3") || (current_path() == "adverse-event/report/step-4") ? 'active': ''; ?>"><a href="<?php echo $site_base_url; ?>/contact-us">Contact Us</a></li>
+            <?php if($user->uid != 0){ ?>
+                <?php if( $user->uid != 0 && (!in_array('employee',$user->roles) && !in_array('sales representative',$user->roles)) ) { ?>
+            <li class="<?php echo (current_path() == "orders") ? 'active': ''; ?> darker-gray">
+                <a href="<?php echo $site_base_url; ?>/orders"><img src="<?php echo $theme_base_url; ?>/images/icon_nav_orders_hover.png" width="13" height="15" class="hover">
+                &nbsp;
+                My orders <span id="order-count-handler-1" class="text-secondary">(<?php echo Astrazeneca_Data::getOrderCount(); ?>)</span></a>
+            </li>
+                <?php  } ?> 
+            <?php } ?> 
+        </ul>
+    </div>
+</div>
+
+<div id="header" class="with-secondary-menu">
+    <div class="section clearfix">
+
+        <div class="nav-1">
+
+            <div class="container-fluid container-max">
+
+                <a href="<?php echo $site_base_url; ?>" title="Home" rel="home" id="logo"><img src="<?php echo $theme_base_url; ?>/images/logo_simply.png" height="53" alt="Home" /></a>
+                <div class="item-added">+ item added</div>
+                <a href="http://www.astrazeneca.com.au/" target="_blank" title="AstraZeneca" id="logo-2" class="hidden-sm hidden-xs"><img src="<?php echo $theme_base_url; ?>/images/logo_astrazeneca.png" height="36" alt="AstraZeneca" /></a>
+                
+                <div id="secondary-menu" class="navigation hidden-sm hidden-xs">
+                    <ul id="secondary-menu-links" class="links inline clearfix">
+                      <?php if($user->uid){ // Somebody's Logged in ?>  
+                        <li class="">
+                            <a href="<?php echo $site_base_url; ?>/user">
+                                <span class="fa fa-caret-down"></span>
+                                <img src="<?php echo $theme_base_url; ?>/images/icon_nav_account.png" width="13" height="15" class="default" />
+                                <img src="<?php echo $theme_base_url; ?>/images/icon_nav_account_hover.png" width="13" height="15" class="hover" />
+                                Welcome <?php echo $user->data['firstname'] . ' ' . $user->data['lastname']; ?>
+                            </a>
+                            <ul>
+                                <?php if(in_array('administrator', $user->roles) || in_array('manager', $user->roles) || in_array('sales representative', $user->roles) || (in_array('doctor', $user->roles) && $user->data['verification'])) { ?>
+                                <li><a href="<?php echo $site_base_url; ?>/manage-account/<?php echo $user->uid; ?>">My Account</a></li>
+                                <?php } ?>
+                                <?php if(in_array('sales representative', $user->roles)){ ?>
+                                <li><a href="<?php echo $site_base_url; ?>/dashboard">My Dashboard</a></li>
+                                <?php } ?>
+                                <li><a href="<?php echo $site_base_url; ?>/user/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                        <?php }else{ // Nobody's Logged in?>
+                        <li class="first">
+                            <a href="#" data-toggle="modal" data-target="#modal-login">
+                                <img src="<?php echo $theme_base_url; ?>/images/icon_nav_account.png" width="13" height="15" class="default" />
+                                <img src="<?php echo $theme_base_url; ?>/images/icon_nav_account_hover.png" width="13" height="15" class="hover" />
+                                Login/Register
+                            </a>
+                        </li>
+                        <?php } ?>
+                        <?php if($user->uid != 0) { ?>
+                            <?php if( $user->uid != 0 && (!in_array('employee',$user->roles) && !in_array('sales representative',$user->roles)) ) { ?>
+                                <li class="last">
+                                    <a href="<?php echo $site_base_url; ?>/orders">
+                                        <img src="<?php echo $theme_base_url; ?>/images/icon_nav_orders.png" width="13" height="15" class="default" />
+                                        <img src="<?php echo $theme_base_url; ?>/images/icon_nav_orders_hover.png" width="13" height="15" class="hover" />
+                                        My Orders <span id="order-count-handler-2" class="text-secondary">(<?php echo Astrazeneca_Data::getOrderCount(); ?>)</span>
+                                    </a>
+                                </li>
+                            <?php  } ?>
+                        <?php } ?>
+                    </ul>
+                </div> <!-- /#secondary-menu -->
+                
+            </div>
+
+        </div>
+
+        <div class="nav-2 hidden-sm hidden-xs">
+            <div class="container-fluid container-max clearfix">
+                <div id="main-menu" class="navigation">
+                    <ul id="main-menu-links" class="links clearfix">
+                        <li class="first <?php echo (isset($node->type) && ($node->type == "therapy_area" || $node->type == "condition")) ? 'active': ''; ?>"><a href="#">Therapy Area <span class="fa fa-chevron-down"></span></a>
+                            <ul>
+                              <?php foreach(Astrazeneca_Data::getTherapyAreas() as $therapy_area){ 
+                                $url_path = $site_base_url . '/' . drupal_get_path_alias('node/' . $therapy_area->nid);
+                              ?>
+                                <?php if($user->uid != 0){ ?>
+                                <li><a href="<?php echo $url_path; ?>"><?php echo $therapy_area->title; ?></a></li>
+                                <?php }else{ ?>
+                                <li><a href="#" data-toggle="modal" data-target="#modal-login"><?php echo $therapy_area->title; ?></a></li>
+                                <?php  } ?> 
+                               <?php } ?>
+                            </ul>
+                        </li>
+                        
+                        <?php if($user->uid != 0){ ?>
+                            <li class="<?php echo ((isset($node->type) && $node->type == "medicine") || current_path() == "medicine") ? 'active': ''; ?>"><a href="<?php echo $site_base_url; ?>/medicine">Medicines</a></li>
+                            <li class="<?php echo (current_path() == "samples-resources") ? 'active': ''; ?>"><a href="<?php echo $site_base_url; ?>/samples-resources">Samples &amp; Resources</a></li>
+                            <li class="<?php echo (current_path() == "events-and-webcasts") ? 'active': ''; ?>"><a href="<?php echo $site_base_url; ?>/events-and-webcasts">Events & Webcasts</a></li>
+                        <?php }else{ ?>
+                            <li class="<?php echo ((isset($node->type) && $node->type == "medicine") || current_path() == "medicine") ? 'active': ''; ?>"><a href="#" data-toggle="modal" data-target="#modal-login">Medicines</a></li>
+                            <li class="<?php echo (current_path() == "samples-resources") ? 'active': ''; ?>"><a href="#" data-toggle="modal" data-target="#modal-login">Samples &amp; Resources</a></li>
+                            <li class="<?php echo (current_path() == "events-and-webcasts") ? 'active': ''; ?>"><a href="#" data-toggle="modal" data-target="#modal-login">Events & Webcasts</a></li>
+                        <?php  } ?> 
+                        <li class="<?php echo (current_path() == "contact-us") || (current_path() == "contact-us/technical-issue") || (current_path() == "adverse-event/report/step-1") || (current_path() == "adverse-event/report/step-2") || (current_path() == "adverse-event/report/step-3") || (current_path() == "adverse-event/report/step-4") ? 'active': ''; ?>"><a href="<?php echo $site_base_url; ?>/contact-us">Contact Us</a></li>
+                        
+                        </ul>
+                </div> <!-- /#main-menu -->
+
+                <div class="header-search">
+                    <form action="<?php echo $site_base_url; ?>/general-search" id="top-search-block-form" class="" role="search" method="get">
+                        <div class="form-group">
+                            <input name="keyword" id="edit-top-search-block-form" type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div> <!-- /.section, /#header -->

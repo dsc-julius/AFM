@@ -6,7 +6,6 @@
 function afm_preprocess_html(&$variables) {
   drupal_add_css(path_to_theme() . '/css/font-awesome.min.css', array('group' => CSS_DEFAULT, 'preprocess' => FALSE));
   drupal_add_css(path_to_theme() . '/css/bootstrap.min.css', array('group' => CSS_DEFAULT, 'preprocess' => FALSE));
-  drupal_add_css(path_to_theme() . '/css/bootstrap-theme.min.css', array('group' => CSS_DEFAULT, 'preprocess' => FALSE));
   drupal_add_css(path_to_theme() . '/css/timeTo.css', array('group' => CSS_DEFAULT, 'preprocess' => FALSE));
   drupal_add_css(path_to_theme() . '/css/animate.css', array('group' => CSS_THEME, 'preprocess' => FALSE));
   drupal_add_css(path_to_theme() . '/css/main.css', array('group' => CSS_THEME, 'preprocess' => FALSE));

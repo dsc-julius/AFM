@@ -23,7 +23,7 @@
                         <a href="#" class="btn animated hiding" data-animation="fadeIn" data-delay="100" data-toggle="modal" data-target="#newsletter-sign-up">Get The Intel First</a>
                         <a href="<?php echo url(drupal_get_path_alias('node/9')); ?>" class="btn animated hiding" data-animation="fadeIn"data-delay="200">Field Report</a>
                     </div>
-                    <div class="truck animated hiding" data-animation="slideInRight" data-delay="300" ><img src="<?php echo $theme_url; ?>/images/truck2.png"></div>
+                    <div class="truck animated hiding" data-animation="fadeIn" data-delay="300" ><img src="<?php echo $theme_url; ?>/images/truck2.png"></div>
                 </div>
             </div>
         </div>
@@ -53,8 +53,8 @@
                     else $index += 1;
                     
                     $image = ($data->field_homepage_panel_image) ? file_create_url($data->field_homepage_panel_image['und']['0']['uri']) : drupal_get_path('theme','afm') . '/images/vehicle-img-c1.jpg';
-                    $filename_d = ($data->field_homepage_panel_image) ? $data->field_homepage_panel_image['und']['0']['filename'] : 'vehicle-img-c1.jpg';
-                    $filename_m = ($data->field_homepage_panel_image_m) ? $data->field_homepage_panel_image_m['und']['0']['filename'] : 'm-vehicle-img-c1.jpg';
+                    $filename_d = ($data->field_homepage_panel_image) ? file_create_url($data->field_homepage_panel_image['und']['0']['uri']) : drupal_get_path('theme','afm') . '/images/vehicle-img-c1.jpg';
+                    $filename_m = ($data->field_homepage_panel_image_m) ? file_create_url($data->field_homepage_panel_image_m['und']['0']['uri']) : drupal_get_path('theme','afm') . '/images/m-vehicle-img-c1.jpg';
                 ?>
                 <div class="vehicle-item animated hiding" data-animation="fadeIn" data-delay="200">
                     <a href="<?php echo url(drupal_get_path_alias('node/'.$data->nid)); ?>"> 
@@ -71,18 +71,62 @@
         <div class="more-intel section-row">
             <div class="container">
                 <h1 class="animated hiding" data-animation="fadeIn" data-delay="100">More Intel</h1>
-                <a href="<?php echo url(drupal_get_path_alias('node/9')); ?>" class="tile-item animated hiding" data-animation="fadeIn" data-delay="300">
-                        <img src="<?php echo $theme_url; ?>/images/tile-img1.png">
-                        <p>Field Report</p>
+
+
+                <a href="<?php echo url(drupal_get_path_alias('node/9')); ?>" class="tile-item animated hiding" data-animation="fadeIn" data-delay="500">
+                    <div class="tile-item-img">
+                            <div class="tile-img-hover">
+                                <div class="tile-hover">
+                                    <img src="<?php echo $theme_url; ?>/images/tile-img1-hover.png">
+                                </div>
+                            </div>
+                            <div class="tile-img">
+                                <img src="<?php echo $theme_url; ?>/images/tile-img1.png">
+                            </div>
+
+                            <div class="flare-left flare"><img src="<?php echo $theme_url; ?>/images/flare.png"></div>
+
+                            <div class="flare-right flare"><img src="<?php echo $theme_url; ?>/images/flare.png"></div>
+                    </div>
+                    <p>Field Report</p>
                 </a>
-                <a href="<?php echo url(drupal_get_path_alias('node/22')); ?>" class="tile-item animated hiding" data-animation="fadeIn" data-delay="400">
-                        <img src="<?php echo $theme_url; ?>/images/tile-img2.png">
-                        <p>History</p>
+
+                <a href="<?php echo url(drupal_get_path_alias('node/22')); ?>" class="tile-item animated hiding" data-animation="fadeIn" data-delay="500">
+                    <div class="tile-item-img">
+                            <div class="tile-img-hover">
+                                <div class="tile-hover">
+                                    <img src="<?php echo $theme_url; ?>/images/tile-img2-hover.png">
+                                </div>
+                            </div>
+                            <div class="tile-img">
+                                <img src="<?php echo $theme_url; ?>/images/tile-img2.png">
+                            </div>
+
+                            <div class="flare-left flare"><img src="<?php echo $theme_url; ?>/images/flare.png"></div>
+
+                            <div class="flare-right flare"><img src="<?php echo $theme_url; ?>/images/flare.png"></div>
+                    </div>
+                    <p>History</p>
                 </a>
+
                 <a href="<?php echo url(drupal_get_path_alias('node/23')); ?>" class="tile-item animated hiding" data-animation="fadeIn" data-delay="500">
-                        <img src="<?php echo $theme_url; ?>/images/tile-img3.png">
-                        <p>Connect</p>
+                    <div class="tile-item-img">
+                            <div class="tile-img-hover">
+                                <div class="tile-hover">
+                                    <img src="<?php echo $theme_url; ?>/images/tile-img3-hover.png">
+                                </div>
+                            </div>
+                            <div class="tile-img">
+                                <img src="<?php echo $theme_url; ?>/images/tile-img3.png">
+                            </div>
+
+                            <div class="flare-left flare"><img src="<?php echo $theme_url; ?>/images/flare.png"></div>
+
+                            <div class="flare-right flare"><img src="<?php echo $theme_url; ?>/images/flare.png"></div>
+                    </div>
+                    <p>Connect</p>
                 </a>
+
             </div>
         </div>
     </div>
